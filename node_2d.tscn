@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvby4a0n1t7cy"]
+
+[ext_resource type="Texture2D" uid="uid://bny23rk4di34u" path="res://icon.svg" id="1_h3llg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aynqn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h3llg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_aynqn")
