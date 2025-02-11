@@ -1,6 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://clt073aseu4oc"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_t2fse"]
+[ext_resource type="Script" path="res://main.gd" id="1_ixsm1"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_t2fse")
+script = ExtResource("1_ixsm1")
+
+[node name="Area2D" type="Area2D" parent="."]
