@@ -1,4 +1,5 @@
 extends Node2D
+signal hit
 
 var mouseOver : bool
 var mousePos : Vector2 = Vector2.ZERO

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://clt073aseu4oc"]
+[gd_scene load_steps=3 format=3 uid="uid://bl5hoqxd47qmw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ixsm1"]
+[ext_resource type="PackedScene" uid="uid://bynkvkkw2qygf" path="res://hamburger.tscn" id="2_ad81d"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ixsm1")
+hamburger_scene = ExtResource("2_ad81d")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hamburger" parent="." instance=ExtResource("2_ad81d")]
