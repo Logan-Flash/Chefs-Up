@@ -17,5 +17,9 @@ texture = ExtResource("2_fdg8x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ju2h4")
 
+[node name="ClickTimeout" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="ClickTimeout" to="." method="_on_click_timeout_timeout"]

@@ -12,5 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_hamburger_container_spawn_thing() -> void:
+	pass
+
+func _on_hamburger_container_hamburger_clicked() -> void:
 	var hamburger = hamburger_scene.instantiate()
 	add_child(hamburger)

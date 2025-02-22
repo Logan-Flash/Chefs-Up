@@ -11,3 +11,6 @@ hamburger_scene = ExtResource("2_ad81d")
 [node name="Hamburger" parent="." instance=ExtResource("2_ad81d")]
 
 [node name="hamburger_container" parent="." instance=ExtResource("3_1nwda")]
+position = Vector2(210, 232)
+
+[connection signal="hamburgerClicked" from="hamburger_container" to="." method="_on_hamburger_container_hamburger_clicked"]
