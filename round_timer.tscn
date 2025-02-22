@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgaaobirgujxk"]
+
+[ext_resource type="Script" path="res://round_timer.gd" id="1_tqq3e"]
+
+[sub_resource type="SystemFont" id="SystemFont_qs0sl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_me1ov"]
+font = SubResource("SystemFont_qs0sl")
+font_size = 30
+
+[node name="RoundTimer" type="Node" node_paths=PackedStringArray("RoundTimerDisplay")]
+script = ExtResource("1_tqq3e")
+RoundTimerDisplay = NodePath("RoundTimerDisplay")
+time = 20
+
+[node name="RoundTimerDisplay" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_right = 96.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_me1ov")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndRoundButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "EndRound"
+
+[connection signal="round_end" from="." to="." method="_on_round_end"]
+[connection signal="pressed" from="EndRoundButton" to="." method="_on_end_round_button_pressed"]
