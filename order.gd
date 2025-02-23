@@ -5,7 +5,7 @@ var order : Array
 @export var order_label : Label
 	
 func _generate_order():
-	var num = randi_range(0,2)
+	var num = randi_range(0,order.size()-1)
 	order = orders[num]
 	_set_label_text()
 	
