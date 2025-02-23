@@ -1,16 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl5hoqxd47qmw"]
+[gd_scene load_steps=10 format=3 uid="uid://bl5hoqxd47qmw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ixsm1"]
 [ext_resource type="PackedScene" uid="uid://bynkvkkw2qygf" path="res://hamburger.tscn" id="2_ad81d"]
 [ext_resource type="PackedScene" uid="uid://cc8c64hh7blmy" path="res://hamburger_container.tscn" id="3_1nwda"]
+[ext_resource type="PackedScene" uid="uid://fgxof6mlm0bx" path="res://lettuce.tscn" id="4_4stxv"]
+[ext_resource type="PackedScene" uid="uid://dlj83v7v131nc" path="res://bun_container.tscn" id="4_cjgpv"]
+[ext_resource type="PackedScene" uid="uid://dagq5ia6sirjm" path="res://cheese.tscn" id="5_2hhpc"]
+[ext_resource type="PackedScene" uid="uid://cw8vtrhcpy85o" path="res://bun.tscn" id="5_gome5"]
+[ext_resource type="PackedScene" uid="uid://cfdpei50e8jgk" path="res://lettuce_container.tscn" id="8_q0rge"]
+[ext_resource type="PackedScene" uid="uid://b7hh4y7ad2s58" path="res://cheese_container.tscn" id="9_7fif4"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ixsm1")
 hamburger_scene = ExtResource("2_ad81d")
+bun_scene = ExtResource("5_gome5")
+lettuce_scene = ExtResource("4_4stxv")
+cheese_scene = ExtResource("5_2hhpc")
 
-[node name="Hamburger" parent="." instance=ExtResource("2_ad81d")]
+[node name="Cheese Container" parent="." instance=ExtResource("9_7fif4")]
+
+[node name="Lettuce Container" parent="." instance=ExtResource("8_q0rge")]
 
 [node name="hamburger_container" parent="." instance=ExtResource("3_1nwda")]
 position = Vector2(210, 232)
 
+[node name="Bun Container" parent="." instance=ExtResource("4_cjgpv")]
+position = Vector2(100, 100)
+
+[node name="Cheese" parent="." instance=ExtResource("5_2hhpc")]
+
+[connection signal="cheeseClicked" from="Cheese Container" to="." method="_on_cheese_container_cheese_clicked"]
+[connection signal="lettuceClicked" from="Lettuce Container" to="." method="_on_lettuce_container_lettuce_clicked"]
 [connection signal="hamburgerClicked" from="hamburger_container" to="." method="_on_hamburger_container_hamburger_clicked"]
+[connection signal="bunClicked" from="Bun Container" to="." method="_on_bun_container_bun_clicked"]

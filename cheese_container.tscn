@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7hh4y7ad2s58"]
+
+[ext_resource type="Script" path="res://cheese_container.gd" id="1_d6c73"]
+[ext_resource type="Texture2D" uid="uid://bky2bd5osq1k5" path="res://Art/Cheese.png" id="2_fecn2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7onmw"]
+size = Vector2(820, 800)
+
+[node name="Cheese Container" type="Node2D"]
+script = ExtResource("1_d6c73")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(100, 350)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_fecn2")
+
+[node name="ClickTimeout" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(100, 350)
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9.99998, -30)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7onmw")
+
+[connection signal="timeout" from="ClickTimeout" to="." method="_on_click_timeout_timeout"]
+[connection signal="timeout" from="ClickTimeout" to="." method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
