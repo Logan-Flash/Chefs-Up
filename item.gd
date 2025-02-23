@@ -1,5 +1,6 @@
 extends Node2D
 
+var item_name = ""
 var in_holder = true
 var holder_position = Vector2(92, 267) #Type in script from values of the transform
 var dragging = false
