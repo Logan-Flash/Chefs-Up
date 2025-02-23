@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6kj0lq58fq42"]
+[gd_scene load_steps=5 format=3 uid="uid://c6kj0lq58fq42"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4blbw"]
 [ext_resource type="Script" path="res://order.gd" id="2_kdm0w"]
 [ext_resource type="PackedScene" uid="uid://cgaaobirgujxk" path="res://round_timer.tscn" id="3_2dcb2"]
+[ext_resource type="PackedScene" uid="uid://bqkr6lg28uv5f" path="res://item.tscn" id="4_hmxck"]
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_4blbw")
@@ -53,3 +54,6 @@ offset_bottom = 138.0
 grow_horizontal = 0
 size_flags_horizontal = 4
 horizontal_alignment = 1
+
+[node name="Item" parent="." instance=ExtResource("4_hmxck")]
+position = Vector2(92, 267)
