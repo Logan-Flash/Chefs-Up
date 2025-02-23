@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6kj0lq58fq42"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_4blbw"]
+[ext_resource type="Script" path="res://order.gd" id="2_kdm0w"]
+[ext_resource type="PackedScene" uid="uid://cgaaobirgujxk" path="res://round_timer.tscn" id="3_2dcb2"]
+
+[node name="GameScene" type="Node"]
+script = ExtResource("1_4blbw")
+
+[node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
+
+[node name="Order1" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
+position = Vector2(1150, 0)
+script = ExtResource("2_kdm0w")
+order_label = NodePath("OrderLabel")
+
+[node name="OrderLabel" type="Label" parent="Order1"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 138.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+horizontal_alignment = 1
+
+[node name="Order2" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
+position = Vector2(1025, 0)
+script = ExtResource("2_kdm0w")
+order_label = NodePath("OrderLabel")
+
+[node name="OrderLabel" type="Label" parent="Order2"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 138.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+horizontal_alignment = 1
+
+[node name="Order3" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
+position = Vector2(900, 0)
+script = ExtResource("2_kdm0w")
+order_label = NodePath("OrderLabel")
+
+[node name="OrderLabel" type="Label" parent="Order3"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 138.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+horizontal_alignment = 1
