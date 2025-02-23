@@ -3,10 +3,6 @@ extends Node
 var orders = [["Bun", "Burger", "Bun"],["Bun", "Lettuce", "Burger", "Bun"], ["Bun", "Cheese", "Burger", "Cheese", "Burger", "Bun"]]
 var order : Array
 @export var order_label : Label
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	_generate_order()
 	
 func _generate_order():
 	var num = randi_range(0,2)
