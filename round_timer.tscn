@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://round_timer.gd" id="1_tqq3e"]
 
-[sub_resource type="SystemFont" id="SystemFont_qs0sl"]
+[sub_resource type="SystemFont" id="SystemFont_yi1go"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_me1ov"]
-font = SubResource("SystemFont_qs0sl")
+font = SubResource("SystemFont_yi1go")
 font_size = 30
 
 [node name="RoundTimer" type="Node" node_paths=PackedStringArray("RoundTimerDisplay")]
@@ -27,12 +28,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EndRoundButton" type="Button" parent="."]
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -88.0
-offset_bottom = 31.0
+offset_top = -31.0
 grow_horizontal = 0
+grow_vertical = 0
 text = "EndRound"
 
 [connection signal="round_end" from="." to="." method="_on_round_end"]
