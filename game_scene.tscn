@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6kj0lq58fq42"]
+[gd_scene load_steps=14 format=3 uid="uid://c6kj0lq58fq42"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4blbw"]
-[ext_resource type="Script" path="res://burger.gd" id="1_js26s"]
 [ext_resource type="Script" path="res://order.gd" id="2_kdm0w"]
 [ext_resource type="PackedScene" uid="uid://cgaaobirgujxk" path="res://round_timer.tscn" id="3_2dcb2"]
 [ext_resource type="Script" path="res://order_tray.gd" id="4_3t63p"]
@@ -20,6 +19,16 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcc7r"]
 size = Vector2(87.3041, 70.3309)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnvi6"]
+size = Vector2(66, 65)
+
+[sub_resource type="SystemFont" id="SystemFont_8dcbd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j46k3"]
+font = SubResource("SystemFont_8dcbd")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_4blbw")
@@ -127,4 +136,35 @@ metadata/_edit_lock_ = true
 
 [node name="Burger" parent="." instance=ExtResource("5_pqdkt")]
 position = Vector2(56, 275)
-script = ExtResource("1_js26s")
+
+[node name="Garbage" type="StaticBody2D" parent="."]
+position = Vector2(1068, 530)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garbage"]
+position = Vector2(41, 39.5)
+shape = SubResource("RectangleShape2D_hnvi6")
+
+[node name="ColorRect2" type="ColorRect" parent="Garbage"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Garbage"]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 44.0
+offset_bottom = 43.0
+scale = Vector2(1.8, 1.8)
+color = Color(0.423651, 0.423651, 0.423651, 1)
+
+[node name="Label" type="Label" parent="Garbage"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_right = 79.0
+grow_vertical = 0
+text = "Garbage"
+label_settings = SubResource("LabelSettings_j46k3")
+horizontal_alignment = 1
