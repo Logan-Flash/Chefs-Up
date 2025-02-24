@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6kj0lq58fq42"]
+[gd_scene load_steps=18 format=3 uid="uid://c6kj0lq58fq42"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4blbw"]
 [ext_resource type="Script" path="res://order.gd" id="2_kdm0w"]
+[ext_resource type="PackedScene" uid="uid://dlv42rfgq38y" path="res://Customer.tscn" id="2_l5rxr"]
 [ext_resource type="PackedScene" uid="uid://cgaaobirgujxk" path="res://round_timer.tscn" id="3_2dcb2"]
 [ext_resource type="Script" path="res://order_tray.gd" id="4_3t63p"]
 [ext_resource type="PackedScene" uid="uid://bqkr6lg28uv5f" path="res://burger.tscn" id="5_pqdkt"]
@@ -35,6 +36,8 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_4blbw")
+
+[node name="Customer" parent="." instance=ExtResource("2_l5rxr")]
 
 [node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
 
