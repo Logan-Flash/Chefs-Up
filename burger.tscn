@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqkr6lg28uv5f"]
+
+[ext_resource type="Script" path="res://burger.gd" id="1_qtw7p"]
+[ext_resource type="Texture2D" uid="uid://qsh4d15rgnwt" path="res://Art/Raw Patty.png" id="2_7gm67"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u3uuq"]
+radius = 40.05
+
+[node name="Burger" type="Node2D"]
+script = ExtResource("1_qtw7p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_7gm67")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 39.0
+offset_bottom = 39.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_u3uuq")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
