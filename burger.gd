@@ -12,8 +12,7 @@ func _process(delta: float) -> void:
 	if dragging: 
 		position = get_global_mouse_position() - offset
 	elif garbage:
-		free()
-
+		queue_free()
 
 func _on_button_button_down() -> void:
 	if in_holder:

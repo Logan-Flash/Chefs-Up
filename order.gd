@@ -22,3 +22,7 @@ func _clear_label():
 
 #On new customer enters, generate new order
 	
+
+
+func _on_order_tray_1_complete_order_1() -> void:
+	_generate_order()

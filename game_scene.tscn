@@ -126,11 +126,10 @@ scale = Vector2(107.812, 176.75)
 texture = SubResource("CanvasTexture_njqb8")
 metadata/_edit_lock_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OrderTray1/Sprite2D"]
-scale = Vector2(0.0115607, 0.0141844)
-metadata/_edit_lock_ = true
+[node name="Area2D" type="Area2D" parent="OrderTray1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray1/Sprite2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray1/Area2D"]
+scale = Vector2(1.24638, 2.50709)
 shape = SubResource("RectangleShape2D_fcc7r")
 metadata/_edit_lock_ = true
 
@@ -168,3 +167,15 @@ grow_vertical = 0
 text = "Garbage"
 label_settings = SubResource("LabelSettings_j46k3")
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 376.0
+offset_top = 428.0
+offset_right = 484.0
+offset_bottom = 451.0
+text = "Complete"
+
+[connection signal="complete_order1" from="OrderTray1" to="Order1" method="_on_order_tray_1_complete_order_1"]
+[connection signal="area_entered" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_exited"]
+[connection signal="button_up" from="Button" to="OrderTray1" method="_on_button_button_up"]
