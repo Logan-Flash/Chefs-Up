@@ -1,18 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6kj0lq58fq42"]
+[gd_scene load_steps=7 format=3 uid="uid://c6kj0lq58fq42"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4blbw"]
 [ext_resource type="Script" path="res://order.gd" id="2_kdm0w"]
 [ext_resource type="PackedScene" uid="uid://cgaaobirgujxk" path="res://round_timer.tscn" id="3_2dcb2"]
 [ext_resource type="Script" path="res://order_tray.gd" id="4_3t63p"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_o0hcr"]
-
-[sub_resource type="SystemFont" id="SystemFont_y58ki"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_8ujh6"]
-font = SubResource("SystemFont_y58ki")
-font_size = 14
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_njqb8"]
 
@@ -25,84 +16,49 @@ script = ExtResource("1_4blbw")
 [node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
 
 [node name="Order1" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
-position = Vector2(880, 90)
+position = Vector2(1150, 0)
 script = ExtResource("2_kdm0w")
 order_label = NodePath("OrderLabel")
 
-[node name="Sprite2D" type="Sprite2D" parent="Order1"]
-scale = Vector2(100, 180)
-texture = SubResource("CanvasTexture_o0hcr")
-
 [node name="OrderLabel" type="Label" parent="Order1"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -90.0
-offset_right = 50.0
-offset_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 138.0
+grow_horizontal = 0
 size_flags_horizontal = 4
-size_flags_vertical = 6
-text = "1"
-label_settings = SubResource("LabelSettings_8ujh6")
 horizontal_alignment = 1
 
 [node name="Order2" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
-position = Vector2(990, 90)
+position = Vector2(1025, 0)
 script = ExtResource("2_kdm0w")
 order_label = NodePath("OrderLabel")
 
-[node name="Sprite2D" type="Sprite2D" parent="Order2"]
-scale = Vector2(100, 180)
-texture = SubResource("CanvasTexture_o0hcr")
-
 [node name="OrderLabel" type="Label" parent="Order2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -90.0
-offset_right = 50.0
-offset_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 138.0
+grow_horizontal = 0
 size_flags_horizontal = 4
-text = "2"
-label_settings = SubResource("LabelSettings_8ujh6")
 horizontal_alignment = 1
 
 [node name="Order3" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
-position = Vector2(1100, 90)
+position = Vector2(900, 0)
 script = ExtResource("2_kdm0w")
 order_label = NodePath("OrderLabel")
 
-[node name="Sprite2D" type="Sprite2D" parent="Order3"]
-scale = Vector2(100, 180)
-texture = SubResource("CanvasTexture_o0hcr")
-
 [node name="OrderLabel" type="Label" parent="Order3"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -90.0
-offset_right = 50.0
-offset_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_bottom = 138.0
+grow_horizontal = 0
 size_flags_horizontal = 4
-text = "3"
-label_settings = SubResource("LabelSettings_8ujh6")
 horizontal_alignment = 1
-clip_text = true
 
 [node name="OrderTray1" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
 position = Vector2(430, 337)
@@ -120,5 +76,6 @@ scale = Vector2(0.0115607, 0.0141844)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray1/Sprite2D/StaticBody2D"]
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fcc7r")
 metadata/_edit_lock_ = true
