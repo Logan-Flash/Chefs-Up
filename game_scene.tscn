@@ -1,0 +1,248 @@
+[gd_scene load_steps=17 format=3 uid="uid://c6kj0lq58fq42"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_4blbw"]
+[ext_resource type="Script" path="res://order.gd" id="2_kdm0w"]
+[ext_resource type="PackedScene" uid="uid://cgaaobirgujxk" path="res://round_timer.tscn" id="3_2dcb2"]
+[ext_resource type="Script" path="res://order_tray.gd" id="4_3t63p"]
+[ext_resource type="PackedScene" uid="uid://bqkr6lg28uv5f" path="res://burger.tscn" id="5_pqdkt"]
+[ext_resource type="PackedScene" uid="uid://bqhx28iksc84a" path="res://bun.tscn" id="6_gnxu2"]
+[ext_resource type="PackedScene" uid="uid://ddg84tm1j7g6f" path="res://lettuce.tscn" id="7_y6uxr"]
+[ext_resource type="PackedScene" uid="uid://b3t4oqra8w381" path="res://cheese.tscn" id="8_kpx8k"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_o0hcr"]
+
+[sub_resource type="SystemFont" id="SystemFont_y58ki"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ujh6"]
+font = SubResource("SystemFont_y58ki")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_njqb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcc7r"]
+size = Vector2(87.3041, 70.3309)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnvi6"]
+size = Vector2(66, 65)
+
+[sub_resource type="SystemFont" id="SystemFont_8dcbd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j46k3"]
+font = SubResource("SystemFont_8dcbd")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="GameScene" type="Node"]
+script = ExtResource("1_4blbw")
+
+[node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
+
+[node name="Order1" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
+position = Vector2(880, 90)
+script = ExtResource("2_kdm0w")
+order_label = NodePath("OrderLabel")
+
+[node name="Sprite2D" type="Sprite2D" parent="Order1"]
+scale = Vector2(100, 180)
+texture = SubResource("CanvasTexture_o0hcr")
+
+[node name="OrderLabel" type="Label" parent="Order1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -90.0
+offset_right = 50.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "1"
+label_settings = SubResource("LabelSettings_8ujh6")
+horizontal_alignment = 1
+
+[node name="Order2" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
+position = Vector2(990, 90)
+script = ExtResource("2_kdm0w")
+order_label = NodePath("OrderLabel")
+
+[node name="Sprite2D" type="Sprite2D" parent="Order2"]
+scale = Vector2(100, 180)
+texture = SubResource("CanvasTexture_o0hcr")
+
+[node name="OrderLabel" type="Label" parent="Order2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -90.0
+offset_right = 50.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "2"
+label_settings = SubResource("LabelSettings_8ujh6")
+horizontal_alignment = 1
+
+[node name="Order3" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
+position = Vector2(1100, 90)
+script = ExtResource("2_kdm0w")
+order_label = NodePath("OrderLabel")
+
+[node name="Sprite2D" type="Sprite2D" parent="Order3"]
+scale = Vector2(100, 180)
+texture = SubResource("CanvasTexture_o0hcr")
+
+[node name="OrderLabel" type="Label" parent="Order3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -90.0
+offset_right = 50.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "3"
+label_settings = SubResource("LabelSettings_8ujh6")
+horizontal_alignment = 1
+clip_text = true
+
+[node name="OrderTray1" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
+position = Vector2(430, 337)
+script = ExtResource("4_3t63p")
+order_node = NodePath("../Order1")
+
+[node name="Sprite2D" type="Sprite2D" parent="OrderTray1"]
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
+scale = Vector2(107.812, 176.75)
+texture = SubResource("CanvasTexture_njqb8")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="OrderTray1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray1/Area2D"]
+scale = Vector2(1.24638, 2.50709)
+shape = SubResource("RectangleShape2D_fcc7r")
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="OrderTray1"]
+offset_left = -54.0
+offset_top = 91.0
+offset_right = 54.0
+offset_bottom = 122.0
+text = "Complete"
+
+[node name="OrderTray2" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
+position = Vector2(560, 337)
+script = ExtResource("4_3t63p")
+order_node = NodePath("../Order2")
+
+[node name="Sprite2D" type="Sprite2D" parent="OrderTray2"]
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
+scale = Vector2(107.812, 176.75)
+texture = SubResource("CanvasTexture_njqb8")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="OrderTray2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray2/Area2D"]
+scale = Vector2(1.24638, 2.50709)
+shape = SubResource("RectangleShape2D_fcc7r")
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="OrderTray2"]
+offset_left = -54.0
+offset_top = 91.0
+offset_right = 54.0
+offset_bottom = 122.0
+text = "Complete"
+
+[node name="OrderTray3" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
+position = Vector2(690, 337)
+script = ExtResource("4_3t63p")
+order_node = NodePath("../Order3")
+
+[node name="Sprite2D" type="Sprite2D" parent="OrderTray3"]
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
+scale = Vector2(107.812, 176.75)
+texture = SubResource("CanvasTexture_njqb8")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="OrderTray3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray3/Area2D"]
+scale = Vector2(1.24638, 2.50709)
+shape = SubResource("RectangleShape2D_fcc7r")
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="OrderTray3"]
+offset_left = -54.0
+offset_top = 91.0
+offset_right = 54.0
+offset_bottom = 122.0
+text = "Complete"
+
+[node name="Garbage" type="StaticBody2D" parent="."]
+position = Vector2(1068, 530)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garbage"]
+position = Vector2(41, 39.5)
+shape = SubResource("RectangleShape2D_hnvi6")
+
+[node name="ColorRect2" type="ColorRect" parent="Garbage"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Garbage"]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 44.0
+offset_bottom = 43.0
+scale = Vector2(1.8, 1.8)
+color = Color(0.423651, 0.423651, 0.423651, 1)
+
+[node name="Label" type="Label" parent="Garbage"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_right = 79.0
+grow_vertical = 0
+text = "Garbage"
+label_settings = SubResource("LabelSettings_j46k3")
+horizontal_alignment = 1
+
+[node name="Burger" parent="." instance=ExtResource("5_pqdkt")]
+position = Vector2(56, 275)
+
+[node name="Bun" parent="." instance=ExtResource("6_gnxu2")]
+position = Vector2(55, 179)
+
+[node name="Lettuce" parent="." instance=ExtResource("7_y6uxr")]
+position = Vector2(55, 368)
+
+[node name="Cheese" parent="." instance=ExtResource("8_kpx8k")]
+position = Vector2(55, 467)
+
+[connection signal="area_entered" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_exited"]
+[connection signal="button_up" from="OrderTray1/Button" to="OrderTray1" method="_on_button_button_up"]
+[connection signal="area_entered" from="OrderTray2/Area2D" to="OrderTray2" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="OrderTray2/Area2D" to="OrderTray2" method="_on_area_2d_area_exited"]
+[connection signal="button_up" from="OrderTray2/Button" to="OrderTray2" method="_on_button_button_up"]
+[connection signal="area_entered" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_exited"]
+[connection signal="button_up" from="OrderTray3/Button" to="OrderTray3" method="_on_button_button_up"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddg84tm1j7g6f"]
+
+[ext_resource type="Script" path="res://item.gd" id="1_j7ipi"]
+[ext_resource type="Texture2D" uid="uid://cv08451dbhs6h" path="res://Art/Lettuce.png" id="2_ts65h"]
+[ext_resource type="Script" path="res://item_ref.gd" id="3_cdmo4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u3uuq"]
+radius = 4.24264
+
+[node name="Lettuce" type="Node2D"]
+script = ExtResource("1_j7ipi")
+item_name = "Lettuce"
+holder_position = Vector2(55, 368)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ts65h")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 39.0
+offset_bottom = 39.0
+
+[node name="LettuceArea2D" type="Area2D" parent="." node_paths=PackedStringArray("item_ref")]
+script = ExtResource("3_cdmo4")
+item_ref = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LettuceArea2D"]
+shape = SubResource("CircleShape2D_u3uuq")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="body_entered" from="LettuceArea2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="LettuceArea2D" to="." method="_on_area_2d_body_exited"]
