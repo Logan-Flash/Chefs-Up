@@ -2,7 +2,7 @@ extends Node2D
 
 @export var order_node : Node2D
 var items_in_tray = Array()
-signal complete_order1
+signal complete_order
 
 func _is_order_complete() -> bool:
 	#Simple first check to see if the number of items is the same
@@ -28,7 +28,8 @@ func _try_to_complete_order():
 func _complete_order():
 	for item in items_in_tray:
 		item.item_ref.garbage = true
-	emit_signal("complete_order1")
+	order_node._generate_order() #Remove after adding customers
+	emit_signal("complete_order")
 		
 func _add_item_to_tray(item : Area2D):
 	items_in_tray.append(item)
