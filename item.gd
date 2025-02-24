@@ -1,8 +1,8 @@
 extends Node2D
 
-var item_name = "Burger"
+@export var item_name = ""
 var in_holder = true
-var holder_position = Vector2(56, 275) #Type in script from values of the transform
+@export var holder_position : Vector2 #Type in script from values of the transform in the game_scene
 var dragging = false
 var garbage = false
 var offset = Vector2(0,0)
@@ -16,7 +16,8 @@ func _process(delta: float) -> void:
 
 func _on_button_button_down() -> void:
 	if in_holder:
-		var new_item = load("res://burger.tscn").instantiate()
+		print_debug("res://" + item_name.to_lower() + ".tscn")
+		var new_item = load("res://" + item_name.to_lower() + ".tscn").instantiate()
 		add_sibling(new_item)
 		new_item.position = new_item.holder_position
 		in_holder = false
