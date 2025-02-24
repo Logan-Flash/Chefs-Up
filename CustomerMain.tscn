@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlv42rfgq38y"]
+
+[ext_resource type="Script" path="res://CustomerMain.gd" id="1_crwlv"]
+[ext_resource type="Script" path="res://Customer.gd" id="2_vogep"]
+
+[sub_resource type="Curve2D" id="Curve2D_pm8kf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 896, 320, 0, 0, 0, 0, 640, 320, 0, 0, 0, 0, 896, 320)
+}
+point_count = 3
+
+[node name="Main" type="Node"]
+script = ExtResource("1_crwlv")
+
+[node name="Customer" type="Node2D" parent="."]
+script = ExtResource("2_vogep")
+
+[node name="Path" type="Path2D" parent="Customer"]
+curve = SubResource("Curve2D_pm8kf")
+
+[node name="PathFollow" type="PathFollow2D" parent="Customer/Path"]
+position = Vector2(896, 320)
+rotation = 3.14159
+rotates = false
+loop = false
+
+[node name="ColorRect" type="ColorRect" parent="Customer/Path/PathFollow"]
+offset_right = 40.0
+offset_bottom = 40.0
