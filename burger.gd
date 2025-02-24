@@ -2,7 +2,7 @@ extends Node2D
 
 var item_name = "Burger"
 var in_holder = true
-var holder_position = Vector2(92, 267) #Type in script from values of the transform
+var holder_position = Vector2(56, 275) #Type in script from values of the transform
 var dragging = false
 var garbage = false
 var offset = Vector2(0,0)

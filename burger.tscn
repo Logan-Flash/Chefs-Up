@@ -23,7 +23,6 @@ offset_bottom = 39.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_u3uuq")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
