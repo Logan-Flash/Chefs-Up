@@ -126,16 +126,69 @@ scale = Vector2(107.812, 176.75)
 texture = SubResource("CanvasTexture_njqb8")
 metadata/_edit_lock_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OrderTray1/Sprite2D"]
-scale = Vector2(0.0115607, 0.0141844)
-metadata/_edit_lock_ = true
+[node name="Area2D" type="Area2D" parent="OrderTray1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray1/Sprite2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray1/Area2D"]
+scale = Vector2(1.24638, 2.50709)
 shape = SubResource("RectangleShape2D_fcc7r")
 metadata/_edit_lock_ = true
 
-[node name="Burger" parent="." instance=ExtResource("5_pqdkt")]
-position = Vector2(56, 275)
+[node name="Button" type="Button" parent="OrderTray1"]
+offset_left = -54.0
+offset_top = 91.0
+offset_right = 54.0
+offset_bottom = 122.0
+text = "Complete"
+
+[node name="OrderTray2" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
+position = Vector2(560, 337)
+script = ExtResource("4_3t63p")
+order_node = NodePath("../Order2")
+
+[node name="Sprite2D" type="Sprite2D" parent="OrderTray2"]
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
+scale = Vector2(107.812, 176.75)
+texture = SubResource("CanvasTexture_njqb8")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="OrderTray2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray2/Area2D"]
+scale = Vector2(1.24638, 2.50709)
+shape = SubResource("RectangleShape2D_fcc7r")
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="OrderTray2"]
+offset_left = -54.0
+offset_top = 91.0
+offset_right = 54.0
+offset_bottom = 122.0
+text = "Complete"
+
+[node name="OrderTray3" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
+position = Vector2(690, 337)
+script = ExtResource("4_3t63p")
+order_node = NodePath("../Order3")
+
+[node name="Sprite2D" type="Sprite2D" parent="OrderTray3"]
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
+scale = Vector2(107.812, 176.75)
+texture = SubResource("CanvasTexture_njqb8")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="OrderTray3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray3/Area2D"]
+scale = Vector2(1.24638, 2.50709)
+shape = SubResource("RectangleShape2D_fcc7r")
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="OrderTray3"]
+offset_left = -54.0
+offset_top = 91.0
+offset_right = 54.0
+offset_bottom = 122.0
+text = "Complete"
 
 [node name="Garbage" type="StaticBody2D" parent="."]
 position = Vector2(1068, 530)
@@ -168,3 +221,16 @@ grow_vertical = 0
 text = "Garbage"
 label_settings = SubResource("LabelSettings_j46k3")
 horizontal_alignment = 1
+
+[node name="Burger" parent="." instance=ExtResource("5_pqdkt")]
+position = Vector2(56, 275)
+
+[connection signal="area_entered" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_exited"]
+[connection signal="button_up" from="OrderTray1/Button" to="OrderTray1" method="_on_button_button_up"]
+[connection signal="area_entered" from="OrderTray2/Area2D" to="OrderTray2" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="OrderTray2/Area2D" to="OrderTray2" method="_on_area_2d_area_exited"]
+[connection signal="button_up" from="OrderTray2/Button" to="OrderTray2" method="_on_button_button_up"]
+[connection signal="area_entered" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_exited"]
+[connection signal="button_up" from="OrderTray3/Button" to="OrderTray3" method="_on_button_button_up"]

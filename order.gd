@@ -21,4 +21,3 @@ func _clear_label():
 #On customer leaves, clear the label
 
 #On new customer enters, generate new order
-	
