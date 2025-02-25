@@ -39,6 +39,11 @@ func _on_order_tray_3_complete_order() -> void:
 func _recieve_complaint():
 	complaints += 1
 	_update_complaints_counter_label()
+	if complaints == max_complaints:
+		add_child(load("res://GameOver.tscn").instantiate())
+		$GameOver.visible = true
+		$GameOver/Label.text += "\n" + $TipCounter.text
+		get_tree().paused = true
 
 func _update_complaints_counter_label():
 	$ComplaintsCounter.text = "Complaints: " + str(complaints) + "/" + str(max_complaints)
