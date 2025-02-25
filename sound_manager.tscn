@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://derrirbcmkarq" path="res://Sounds/Customer Getting Frustrated.wav" id="6_tyahj"]
 
 [node name="Sound Manager" type="Node"]
+process_mode = 3
 script = ExtResource("1_n6m03")
 
 [node name="Background Music" type="AudioStreamPlayer2D" parent="."]

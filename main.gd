@@ -3,16 +3,12 @@ extends Node
 var tips = 0
 var complaints = 0
 @export var max_complaints = 3
-
+signal leaves
+signal satisfied
+signal background
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Order1.order = ["Burger", "Burger"]
-	$Order1._set_label_text()
-	$Order2.order = ["Burger", "Burger"]
-	$Order2._set_label_text()
-	$Order3.order = ["Burger", "Burger"]
-	$Order3._set_label_text()
-	
+	emit_signal("background")
 	_update_complaints_counter_label()
 	_update_tip_counter_label_text()
 
@@ -22,6 +18,7 @@ func _process(delta: float) -> void:
 
 func _recieve_tip():
 	tips += 1
+	emit_signal("satisfied")
 	_update_tip_counter_label_text()
 	
 func _update_tip_counter_label_text():
@@ -40,8 +37,9 @@ func _recieve_complaint():
 	complaints += 1
 	_update_complaints_counter_label()
 	if complaints == max_complaints:
-		add_child(load("res://GameOver.tscn").instantiate())
+		#add_child(load("res://GameOver.tscn").instantiate())
 		$GameOver.visible = true
+		$GameOver.process_mode = Node.PROCESS_MODE_ALWAYS
 		$GameOver/Label.text += "\n" + $TipCounter.text
 		get_tree().paused = true
 
@@ -51,11 +49,18 @@ func _update_complaints_counter_label():
 func _on_customer_1_frustrated() -> void:
 	_recieve_complaint()
 	$Order1._clear_order()
+	emit_signal("leaves")
 
 func _on_customer_2_frustrated() -> void:
 	_recieve_complaint()
 	$Order2._clear_order()
+	emit_signal("leaves")
 
 func _on_customer_3_frustrated() -> void:
 	_recieve_complaint()
 	$Order3._clear_order()
+	emit_signal("leaves")
+
+
+func _on_customer_getting_angry() -> void:
+	pass # Replace with function body.

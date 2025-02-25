@@ -2,6 +2,7 @@ extends Node2D
 
 signal at_desk
 signal frustrated
+signal getting_angry
 @onready var pathFollow = $Path/PathFollow
 var speed = 2
 var leaving = false
@@ -50,6 +51,7 @@ func _on_round_timer_round_end() -> void:
 		$Path/PathFollow/AnimatedSprite2D.speed_scale = 1.5
 	elif frustration == patience_level:
 		$Path/PathFollow/AnimatedSprite2D.speed_scale = 2
+		emit_signal("getting_angry")
 	elif frustration > patience_level:
 		leaving = true
 		emit_signal("frustrated")

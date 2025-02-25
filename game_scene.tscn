@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6kj0lq58fq42"]
+[gd_scene load_steps=24 format=3 uid="uid://c6kj0lq58fq42"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4blbw"]
 [ext_resource type="Script" path="res://order.gd" id="2_kdm0w"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bqhx28iksc84a" path="res://bun.tscn" id="6_gnxu2"]
 [ext_resource type="PackedScene" uid="uid://ddg84tm1j7g6f" path="res://lettuce.tscn" id="7_y6uxr"]
 [ext_resource type="PackedScene" uid="uid://b3t4oqra8w381" path="res://cheese.tscn" id="8_kpx8k"]
+[ext_resource type="PackedScene" uid="uid://dd5wmfrcamfyf" path="res://sound_manager.tscn" id="10_bojcg"]
+[ext_resource type="PackedScene" uid="uid://byxn8y73dmsq3" path="res://GameOver.tscn" id="11_p5u34"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_o0hcr"]
 
@@ -67,7 +69,6 @@ position = Vector2(394, 818)
 rotation = -1.57801
 
 [node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
-time = 15
 
 [node name="Order1" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
 position = Vector2(880, 90)
@@ -296,8 +297,17 @@ offset_right = 186.0
 offset_bottom = 78.0
 label_settings = SubResource("LabelSettings_oxyq1")
 
+[node name="Sound Manager" parent="." instance=ExtResource("10_bojcg")]
+
+[node name="GameOver" parent="." instance=ExtResource("11_p5u34")]
+process_mode = 4
+
+[connection signal="background" from="." to="Sound Manager" method="_on_game_scene_background"]
+[connection signal="leaves" from="." to="Sound Manager" method="_on_game_scene_leaves"]
+[connection signal="satisfied" from="." to="Sound Manager" method="_on_game_scene_satisfied"]
 [connection signal="at_desk" from="Customer1" to="Order1" method="_on_customer_1_at_desk"]
 [connection signal="frustrated" from="Customer1" to="." method="_on_customer_1_frustrated"]
+[connection signal="getting_angry" from="Customer1" to="Sound Manager" method="_on_customer_getting_angry"]
 [connection signal="at_desk" from="Customer2" to="Order2" method="_on_customer_2_at_desk"]
 [connection signal="frustrated" from="Customer2" to="." method="_on_customer_2_frustrated"]
 [connection signal="at_desk" from="Customer3" to="Order3" method="_on_customer_3_at_desk"]
@@ -321,3 +331,4 @@ label_settings = SubResource("LabelSettings_oxyq1")
 [connection signal="area_entered" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_exited"]
 [connection signal="button_up" from="OrderTray3/Button" to="OrderTray3" method="_on_button_button_up"]
+[connection signal="fired" from="GameOver" to="Sound Manager" method="_on_game_over_fired"]

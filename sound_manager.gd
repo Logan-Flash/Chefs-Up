@@ -27,3 +27,22 @@ func play_frustrated():
 
 func play_satisfied():
 	$Satisfied.play()
+
+
+func _on_game_scene_leaves() -> void:
+	play_leaving()
+
+func _on_game_over_fired() -> void:
+	play_fired()
+
+
+func _on_game_scene_satisfied() -> void:
+	play_satisfied()
+
+
+func _on_game_scene_background() -> void:
+	start_background_music()
+
+
+func _on_customer_getting_angry() -> void:
+	play_frustrated()
