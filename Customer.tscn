@@ -1,12 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlv42rfgq38y"]
+[gd_scene load_steps=8 format=3 uid="uid://dlv42rfgq38y"]
 
 [ext_resource type="Script" path="res://Customer.gd" id="1_c661x"]
+[ext_resource type="Texture2D" uid="uid://cr5akv64osad6" path="res://Art/drive-download-20250224T174413Z-001/Idle_1.png" id="2_a35ja"]
+[ext_resource type="Texture2D" uid="uid://cfa6als5vrtip" path="res://Art/drive-download-20250224T174413Z-001/Idle_2.png" id="3_d4c1e"]
+[ext_resource type="Texture2D" uid="uid://bk1eluucc8dmv" path="res://Art/drive-download-20250224T174413Z-001/Walk_1.png" id="4_pff2w"]
+[ext_resource type="Texture2D" uid="uid://c0egc70qd6ord" path="res://Art/drive-download-20250224T174413Z-001/Walk_2.png" id="5_rqphj"]
 
 [sub_resource type="Curve2D" id="Curve2D_pm8kf"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 896, 320, 0, 0, 0, 0, 640, 320, 0, 0, 0, 0, 896, 320)
 }
 point_count = 3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frqk1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a35ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d4c1e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pff2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rqphj")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [node name="Customer" type="Node2D"]
 script = ExtResource("1_c661x")
@@ -20,6 +49,9 @@ rotation = 3.14159
 rotates = false
 loop = false
 
-[node name="ColorRect" type="ColorRect" parent="Path/PathFollow"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/PathFollow"]
+position = Vector2(-0.999878, -1.00002)
+rotation = -1.56621
+scale = Vector2(0.0648146, 0.0805558)
+sprite_frames = SubResource("SpriteFrames_frqk1")
+animation = &"Idle"
