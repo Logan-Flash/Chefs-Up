@@ -48,7 +48,15 @@ font_size = 20
 [node name="GameScene" type="Node"]
 script = ExtResource("1_4blbw")
 
-[node name="Customer" parent="." instance=ExtResource("2_l5rxr")]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1154.0
+offset_bottom = 665.0
+color = Color(0.643603, 0.458047, 0.32073, 1)
+
+[node name="Customer1" parent="." instance=ExtResource("2_l5rxr")]
+position = Vector2(113, 838)
+rotation = -1.57777
+metadata/_edit_group_ = true
 
 [node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
 time = 5
@@ -268,6 +276,17 @@ position = Vector2(55, 368)
 [node name="Cheese" parent="." instance=ExtResource("8_kpx8k")]
 position = Vector2(55, 467)
 
+[node name="Customer2" parent="." instance=ExtResource("2_l5rxr")]
+position = Vector2(242, 840)
+rotation = -1.56992
+
+[node name="Customer3" parent="." instance=ExtResource("2_l5rxr")]
+position = Vector2(394, 843)
+rotation = -1.57801
+
+[connection signal="complete_order" from="OrderTray1" to="Customer1" method="_on_order_tray_1_complete_order"]
+[connection signal="complete_order" from="OrderTray2" to="Customer2" method="_on_order_tray_2_complete_order"]
+[connection signal="complete_order" from="OrderTray3" to="Customer3" method="_on_order_tray_3_complete_order"]
 [node name="TipCounter" type="Label" parent="."]
 offset_left = 9.0
 offset_right = 268.0
