@@ -55,17 +55,16 @@ offset_bottom = 665.0
 color = Color(0.643603, 0.458047, 0.32073, 1)
 
 [node name="Customer1" parent="." instance=ExtResource("2_l5rxr")]
-position = Vector2(125, 842)
+position = Vector2(125, 817)
 rotation = -1.57777
 
 [node name="Customer2" parent="." instance=ExtResource("2_l5rxr")]
-position = Vector2(251, 840)
+position = Vector2(251, 815)
 rotation = -1.56992
 
 [node name="Customer3" parent="." instance=ExtResource("2_l5rxr")]
-position = Vector2(394, 843)
+position = Vector2(394, 818)
 rotation = -1.57801
-scale = Vector2(1, 1)
 
 [node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
 time = 5
@@ -297,6 +296,12 @@ offset_right = 186.0
 offset_bottom = 78.0
 label_settings = SubResource("LabelSettings_oxyq1")
 
+[connection signal="frustrated" from="Customer1" to="." method="_on_customer_1_frustrated"]
+[connection signal="frustrated" from="Customer2" to="." method="_on_customer_2_frustrated"]
+[connection signal="frustrated" from="Customer3" to="." method="_on_customer_3_frustrated"]
+[connection signal="round_end" from="RoundTimer" to="Customer1" method="_on_round_timer_round_end"]
+[connection signal="round_end" from="RoundTimer" to="Customer2" method="_on_round_timer_round_end"]
+[connection signal="round_end" from="RoundTimer" to="Customer3" method="_on_round_timer_round_end"]
 [connection signal="round_end" from="RoundTimer" to="Burger" method="_on_round_timer_round_end"]
 [connection signal="complete_order" from="OrderTray1" to="." method="_on_order_tray_1_complete_order"]
 [connection signal="complete_order" from="OrderTray1" to="Customer1" method="_on_order_tray_1_complete_order"]
