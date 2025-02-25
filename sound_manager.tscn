@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd5wmfrcamfyf"]
+
+[ext_resource type="Script" path="res://sound_manager.gd" id="1_n6m03"]
+[ext_resource type="AudioStream" uid="uid://bouk43k8fbosr" path="res://Sounds/Fired.wav" id="2_0q1d1"]
+[ext_resource type="AudioStream" uid="uid://dgd0775h1140h" path="res://Sounds/Customer Happy.wav" id="3_0dngw"]
+[ext_resource type="AudioStream" uid="uid://c8xxl28ofsxqm" path="res://Sounds/Customer Leaving.wav" id="4_keevt"]
+[ext_resource type="AudioStream" uid="uid://dca8jt2e1b0sc" path="res://Sounds/Background Music.wav" id="5_w3sh7"]
+[ext_resource type="AudioStream" uid="uid://derrirbcmkarq" path="res://Sounds/Customer Getting Frustrated.wav" id="6_tyahj"]
+
+[node name="Sound Manager" type="Node"]
+script = ExtResource("1_n6m03")
+
+[node name="Background Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_w3sh7")
+volume_db = -10.0
+
+[node name="Fired" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0q1d1")
+volume_db = 20.0
+
+[node name="Satisfied" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0dngw")
+volume_db = 10.0
+
+[node name="Leaving" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_keevt")
+volume_db = 10.0
+
+[node name="Getting Frustrated" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tyahj")
+volume_db = 10.0
