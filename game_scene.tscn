@@ -284,9 +284,6 @@ rotation = -1.56992
 position = Vector2(394, 843)
 rotation = -1.57801
 
-[connection signal="complete_order" from="OrderTray1" to="Customer1" method="_on_order_tray_1_complete_order"]
-[connection signal="complete_order" from="OrderTray2" to="Customer2" method="_on_order_tray_2_complete_order"]
-[connection signal="complete_order" from="OrderTray3" to="Customer3" method="_on_order_tray_3_complete_order"]
 [node name="TipCounter" type="Label" parent="."]
 offset_left = 9.0
 offset_right = 268.0
@@ -302,14 +299,17 @@ label_settings = SubResource("LabelSettings_oxyq1")
 
 [connection signal="round_end" from="RoundTimer" to="Burger" method="_on_round_timer_round_end"]
 [connection signal="complete_order" from="OrderTray1" to="." method="_on_order_tray_1_complete_order"]
+[connection signal="complete_order" from="OrderTray1" to="Customer1" method="_on_order_tray_1_complete_order"]
 [connection signal="area_entered" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_exited"]
 [connection signal="button_up" from="OrderTray1/Button" to="OrderTray1" method="_on_button_button_up"]
 [connection signal="complete_order" from="OrderTray2" to="." method="_on_order_tray_2_complete_order"]
+[connection signal="complete_order" from="OrderTray2" to="Customer2" method="_on_order_tray_2_complete_order"]
 [connection signal="area_entered" from="OrderTray2/Area2D" to="OrderTray2" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OrderTray2/Area2D" to="OrderTray2" method="_on_area_2d_area_exited"]
 [connection signal="button_up" from="OrderTray2/Button" to="OrderTray2" method="_on_button_button_up"]
 [connection signal="complete_order" from="OrderTray3" to="." method="_on_order_tray_3_complete_order"]
+[connection signal="complete_order" from="OrderTray3" to="Customer3" method="_on_order_tray_3_complete_order"]
 [connection signal="area_entered" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_exited"]
 [connection signal="button_up" from="OrderTray3/Button" to="OrderTray3" method="_on_button_button_up"]

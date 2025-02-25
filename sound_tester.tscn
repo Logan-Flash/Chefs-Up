@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://pnbwqv2ialar"]
+
+[ext_resource type="Script" path="res://sound_tester.gd" id="1_pp5q2"]
+[ext_resource type="PackedScene" uid="uid://dd5wmfrcamfyf" path="res://sound_manager.tscn" id="2_bkbi4"]
+
+[node name="Sound Tester" type="Node"]
+script = ExtResource("1_pp5q2")
+sound_manager_scene = ExtResource("2_bkbi4")
+
+[node name="Sound Manager" parent="." instance=ExtResource("2_bkbi4")]
+
+[node name="Play Background Music" type="Button" parent="."]
+offset_left = 202.0
+offset_top = 144.0
+offset_right = 394.0
+offset_bottom = 175.0
+text = "Start Background Music
+"
+
+[connection signal="pressed" from="Play Background Music" to="." method="_on_play_background_music_pressed"]
