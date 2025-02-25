@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqkr6lg28uv5f"]
 
-[ext_resource type="Script" path="res://item.gd" id="1_qtw7p"]
+[ext_resource type="Script" path="res://cookable_item.gd" id="1_a3prd"]
 [ext_resource type="Texture2D" uid="uid://qsh4d15rgnwt" path="res://Art/Raw Patty.png" id="2_7gm67"]
 [ext_resource type="Script" path="res://item_ref.gd" id="3_37v4n"]
 
@@ -8,8 +8,10 @@
 radius = 4.24264
 
 [node name="Burger" type="Node2D"]
-script = ExtResource("1_qtw7p")
+script = ExtResource("1_a3prd")
+cook_time = 2
 item_name = "Burger"
+cookable = true
 holder_position = Vector2(55, 275)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

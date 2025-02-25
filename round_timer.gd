@@ -22,8 +22,6 @@ func _reset_timer():
 
 func _signal_round_end():
 	emit_signal("round_end")
-		
-func _on_round_end():
 	_reset_timer()
 
 func _on_end_round_button_pressed() -> void:
