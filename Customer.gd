@@ -1,29 +1,34 @@
 extends Node2D
 
+signal at_desk
 signal frustrated
 @onready var pathFollow = $Path/PathFollow
-var speed = 1
+var speed = 2
 var leaving = false
 var frustration = 0
 var patience_level = 0
+var ordered = false
 
 func _ready() -> void:
 	_new_customer()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
 	if pathFollow.progress != 256 or leaving:
 		$Path/PathFollow/AnimatedSprite2D.play()
 		$Path/PathFollow/AnimatedSprite2D.animation = "Walk"
 		pathFollow.progress += speed 
 	elif pathFollow.progress == 256:
+		if not ordered:
+			ordered = true
+			emit_signal("at_desk")
 		$Path/PathFollow/AnimatedSprite2D.animation = "Idle"
 		
 	if pathFollow.progress_ratio == 1:
 		_new_customer()
 	
 func _new_customer():
+	ordered = false
 	leaving = false
 	pathFollow.progress_ratio = 0
 	frustration = 0

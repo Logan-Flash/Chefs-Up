@@ -67,7 +67,7 @@ position = Vector2(394, 818)
 rotation = -1.57801
 
 [node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
-time = 5
+time = 15
 
 [node name="Order1" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
 position = Vector2(880, 90)
@@ -296,8 +296,11 @@ offset_right = 186.0
 offset_bottom = 78.0
 label_settings = SubResource("LabelSettings_oxyq1")
 
+[connection signal="at_desk" from="Customer1" to="Order1" method="_on_customer_1_at_desk"]
 [connection signal="frustrated" from="Customer1" to="." method="_on_customer_1_frustrated"]
+[connection signal="at_desk" from="Customer2" to="Order2" method="_on_customer_2_at_desk"]
 [connection signal="frustrated" from="Customer2" to="." method="_on_customer_2_frustrated"]
+[connection signal="at_desk" from="Customer3" to="Order3" method="_on_customer_3_at_desk"]
 [connection signal="frustrated" from="Customer3" to="." method="_on_customer_3_frustrated"]
 [connection signal="round_end" from="RoundTimer" to="Customer1" method="_on_round_timer_round_end"]
 [connection signal="round_end" from="RoundTimer" to="Customer2" method="_on_round_timer_round_end"]
