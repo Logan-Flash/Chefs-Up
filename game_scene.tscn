@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6kj0lq58fq42"]
+[gd_scene load_steps=22 format=3 uid="uid://c6kj0lq58fq42"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4blbw"]
 [ext_resource type="Script" path="res://order.gd" id="2_kdm0w"]
@@ -38,17 +38,24 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_u08ta"]
 font_size = 20
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_pbevt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffmfi"]
+size = Vector2(179, 75)
+
 [node name="GameScene" type="Node"]
 script = ExtResource("1_4blbw")
 
 [node name="Customer" parent="." instance=ExtResource("2_l5rxr")]
 
 [node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
+time = 5
 
 [node name="Order1" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
 position = Vector2(880, 90)
 script = ExtResource("2_kdm0w")
 order_label = NodePath("OrderLabel")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Order1"]
 scale = Vector2(100, 180)
@@ -76,6 +83,7 @@ horizontal_alignment = 1
 position = Vector2(990, 90)
 script = ExtResource("2_kdm0w")
 order_label = NodePath("OrderLabel")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Order2"]
 scale = Vector2(100, 180)
@@ -102,6 +110,7 @@ horizontal_alignment = 1
 position = Vector2(1100, 90)
 script = ExtResource("2_kdm0w")
 order_label = NodePath("OrderLabel")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Order3"]
 scale = Vector2(100, 180)
@@ -129,19 +138,18 @@ clip_text = true
 position = Vector2(430, 337)
 script = ExtResource("4_3t63p")
 order_node = NodePath("../Order1")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="OrderTray1"]
 modulate = Color(0.564962, 0.564962, 0.564962, 1)
 scale = Vector2(107.812, 176.75)
 texture = SubResource("CanvasTexture_njqb8")
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="OrderTray1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray1/Area2D"]
 scale = Vector2(1.24638, 2.50709)
 shape = SubResource("RectangleShape2D_fcc7r")
-metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="OrderTray1"]
 offset_left = -54.0
@@ -154,19 +162,18 @@ text = "Complete"
 position = Vector2(560, 337)
 script = ExtResource("4_3t63p")
 order_node = NodePath("../Order2")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="OrderTray2"]
 modulate = Color(0.564962, 0.564962, 0.564962, 1)
 scale = Vector2(107.812, 176.75)
 texture = SubResource("CanvasTexture_njqb8")
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="OrderTray2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray2/Area2D"]
 scale = Vector2(1.24638, 2.50709)
 shape = SubResource("RectangleShape2D_fcc7r")
-metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="OrderTray2"]
 offset_left = -54.0
@@ -179,19 +186,18 @@ text = "Complete"
 position = Vector2(690, 337)
 script = ExtResource("4_3t63p")
 order_node = NodePath("../Order3")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="OrderTray3"]
 modulate = Color(0.564962, 0.564962, 0.564962, 1)
 scale = Vector2(107.812, 176.75)
 texture = SubResource("CanvasTexture_njqb8")
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="OrderTray3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OrderTray3/Area2D"]
 scale = Vector2(1.24638, 2.50709)
 shape = SubResource("RectangleShape2D_fcc7r")
-metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="OrderTray3"]
 offset_left = -54.0
@@ -202,6 +208,7 @@ text = "Complete"
 
 [node name="Garbage" type="StaticBody2D" parent="."]
 position = Vector2(1068, 530)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Garbage"]
 position = Vector2(41, 39.5)
@@ -251,6 +258,22 @@ offset_bottom = 43.0
 label_settings = SubResource("LabelSettings_u08ta")
 script = ExtResource("10_bua4g")
 
+[node name="CookingStation" type="StaticBody2D" parent="."]
+z_index = -5
+position = Vector2(519, 507)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CookingStation"]
+modulate = Color(0.230315, 0.230315, 0.230315, 1)
+position = Vector2(43, 50.25)
+scale = Vector2(208, 101.5)
+texture = SubResource("CanvasTexture_pbevt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CookingStation"]
+position = Vector2(41.5, 50.5)
+shape = SubResource("RectangleShape2D_ffmfi")
+
+[connection signal="round_end" from="RoundTimer" to="Burger" method="_on_round_timer_round_end"]
 [connection signal="complete_order" from="OrderTray1" to="TipCounter" method="_on_order_tray_1_complete_order"]
 [connection signal="area_entered" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_exited"]
