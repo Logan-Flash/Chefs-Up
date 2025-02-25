@@ -47,3 +47,15 @@ func _recieve_complaint():
 
 func _update_complaints_counter_label():
 	$ComplaintsCounter.text = "Complaints: " + str(complaints) + "/" + str(max_complaints)
+
+func _on_customer_1_frustrated() -> void:
+	_recieve_complaint()
+	$Order1._clear_order()
+
+func _on_customer_2_frustrated() -> void:
+	_recieve_complaint()
+	$Order2._clear_order()
+
+func _on_customer_3_frustrated() -> void:
+	_recieve_complaint()
+	$Order3._clear_order()

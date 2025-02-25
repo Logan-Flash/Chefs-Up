@@ -24,9 +24,15 @@ func _set_label_text():
 		order_string += item + "\n"
 	order_label.text = order_string
 	
-func _clear_label():
-	order_label.text = ""
+func _clear_order():
+	order = []
+	_set_label_text()
 	
-#On customer leaves, clear the label
+func _on_customer_1_at_desk() -> void:
+	_generate_order()
 
-#On new customer enters, generate new order
+func _on_customer_2_at_desk() -> void:
+	_generate_order()
+
+func _on_customer_3_at_desk() -> void:
+	_generate_order()

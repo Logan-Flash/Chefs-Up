@@ -48,18 +48,26 @@ font_size = 20
 [node name="GameScene" type="Node"]
 script = ExtResource("1_4blbw")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
 offset_right = 1154.0
 offset_bottom = 665.0
 color = Color(0.643603, 0.458047, 0.32073, 1)
 
 [node name="Customer1" parent="." instance=ExtResource("2_l5rxr")]
-position = Vector2(113, 838)
+position = Vector2(125, 817)
 rotation = -1.57777
-metadata/_edit_group_ = true
+
+[node name="Customer2" parent="." instance=ExtResource("2_l5rxr")]
+position = Vector2(251, 815)
+rotation = -1.56992
+
+[node name="Customer3" parent="." instance=ExtResource("2_l5rxr")]
+position = Vector2(394, 818)
+rotation = -1.57801
 
 [node name="RoundTimer" parent="." instance=ExtResource("3_2dcb2")]
-time = 5
+time = 15
 
 [node name="Order1" type="Node2D" parent="." node_paths=PackedStringArray("order_label")]
 position = Vector2(880, 90)
@@ -145,7 +153,7 @@ horizontal_alignment = 1
 clip_text = true
 
 [node name="OrderTray1" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
-position = Vector2(430, 337)
+position = Vector2(440, 337)
 script = ExtResource("4_3t63p")
 order_node = NodePath("../Order1")
 metadata/_edit_group_ = true
@@ -169,7 +177,7 @@ offset_bottom = 122.0
 text = "Complete"
 
 [node name="OrderTray2" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
-position = Vector2(560, 337)
+position = Vector2(575, 337)
 script = ExtResource("4_3t63p")
 order_node = NodePath("../Order2")
 metadata/_edit_group_ = true
@@ -193,7 +201,7 @@ offset_bottom = 122.0
 text = "Complete"
 
 [node name="OrderTray3" type="Node2D" parent="." node_paths=PackedStringArray("order_node")]
-position = Vector2(690, 337)
+position = Vector2(710, 337)
 script = ExtResource("4_3t63p")
 order_node = NodePath("../Order3")
 metadata/_edit_group_ = true
@@ -250,8 +258,7 @@ label_settings = SubResource("LabelSettings_j46k3")
 horizontal_alignment = 1
 
 [node name="CookingStation" type="StaticBody2D" parent="."]
-z_index = -5
-position = Vector2(519, 507)
+position = Vector2(531, 517)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CookingStation"]
@@ -276,14 +283,6 @@ position = Vector2(55, 368)
 [node name="Cheese" parent="." instance=ExtResource("8_kpx8k")]
 position = Vector2(55, 467)
 
-[node name="Customer2" parent="." instance=ExtResource("2_l5rxr")]
-position = Vector2(242, 840)
-rotation = -1.56992
-
-[node name="Customer3" parent="." instance=ExtResource("2_l5rxr")]
-position = Vector2(394, 843)
-rotation = -1.57801
-
 [node name="TipCounter" type="Label" parent="."]
 offset_left = 9.0
 offset_right = 268.0
@@ -297,6 +296,15 @@ offset_right = 186.0
 offset_bottom = 78.0
 label_settings = SubResource("LabelSettings_oxyq1")
 
+[connection signal="at_desk" from="Customer1" to="Order1" method="_on_customer_1_at_desk"]
+[connection signal="frustrated" from="Customer1" to="." method="_on_customer_1_frustrated"]
+[connection signal="at_desk" from="Customer2" to="Order2" method="_on_customer_2_at_desk"]
+[connection signal="frustrated" from="Customer2" to="." method="_on_customer_2_frustrated"]
+[connection signal="at_desk" from="Customer3" to="Order3" method="_on_customer_3_at_desk"]
+[connection signal="frustrated" from="Customer3" to="." method="_on_customer_3_frustrated"]
+[connection signal="round_end" from="RoundTimer" to="Customer1" method="_on_round_timer_round_end"]
+[connection signal="round_end" from="RoundTimer" to="Customer2" method="_on_round_timer_round_end"]
+[connection signal="round_end" from="RoundTimer" to="Customer3" method="_on_round_timer_round_end"]
 [connection signal="round_end" from="RoundTimer" to="Burger" method="_on_round_timer_round_end"]
 [connection signal="complete_order" from="OrderTray1" to="." method="_on_order_tray_1_complete_order"]
 [connection signal="complete_order" from="OrderTray1" to="Customer1" method="_on_order_tray_1_complete_order"]

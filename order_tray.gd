@@ -7,7 +7,7 @@ signal complete_order
 
 func _is_order_complete() -> bool:
 	#Simple first check to see if the number of items is the same
-	if items_in_tray.size() != order_node.order.size():
+	if items_in_tray.size() != order_node.order.size() or order_node.order.size() == 0:
 		return false
 		
 	#Check that there are the correct number of anything
@@ -31,7 +31,7 @@ func _try_to_complete_order():
 func _complete_order():
 	for item in items_in_tray:
 		item.item_ref.garbage = true
-	order_node._generate_order() #Remove after adding customers
+	order_node._clear_order()
 	emit_signal("complete_order")
 		
 func _add_item_to_tray(item : Area2D):
