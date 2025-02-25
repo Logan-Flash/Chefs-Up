@@ -1,13 +1,14 @@
 extends Node2D
 
 @export var item_name = ""
+@export var cookable = false
+var servable = true
 var in_holder = true
 @export var holder_position : Vector2 #Type in script from values of the transform in the game_scene
 var dragging = false
 var garbage = false
 var offset = Vector2(0,0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if dragging: 
 		position = get_global_mouse_position() - offset
@@ -15,11 +16,13 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_button_button_down() -> void:
-	if in_holder:
-		print_debug("res://" + item_name.to_lower() + ".tscn")
+	if in_holder: #Spawn next item
 		var new_item = load("res://" + item_name.to_lower() + ".tscn").instantiate()
 		add_sibling(new_item)
 		new_item.position = new_item.holder_position
+		#If the item is cookable, it will need to listen for round ends
+		if new_item.cookable == true: 
+			$"../RoundTimer".round_end.connect(new_item._on_round_timer_round_end)
 		in_holder = false
 	dragging = true
 	offset = get_global_mouse_position() - global_position

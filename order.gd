@@ -1,6 +1,15 @@
 extends Node
 
-var orders = [["Bun", "Burger", "Bun"],["Bun", "Lettuce", "Burger", "Bun"], ["Bun", "Cheese", "Burger", "Cheese", "Burger", "Bun"]]
+var orders = [["Bun", "Burger", "Bun"],
+["Bun", "Lettuce", "Burger", "Bun"], 
+["Bun", "Cheese", "Burger", "Cheese", "Burger", "Bun"],
+["Bun", "Cheese", "Lettuce", "Burger", "Bun"],
+["Bun", "Lettuce", "Lettuce", "Lettuce", "Bun"],
+["Bun", "Cheese", "Burger", "Bun"],
+["Bun", "Cheese", "Cheese", "Burger", "Bun"],
+["Cheese", "Burger"],
+["Burger"],
+["Bun", "Lettuce", "Cheese", "Burger", "Burger", "Bun"]]
 var order : Array
 @export var order_label : Label
 	

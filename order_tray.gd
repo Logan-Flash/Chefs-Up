@@ -2,6 +2,7 @@ extends Node2D
 
 @export var order_node : Node2D
 var items_in_tray = Array()
+@warning_ignore("unused_signal")
 signal complete_order
 
 func _is_order_complete() -> bool:
@@ -14,6 +15,8 @@ func _is_order_complete() -> bool:
 	for item in order_node.order:
 		var object_item : Area2D #Null, otherwise an object in the tray with the name of something on the order
 		for object in unchecked_objects:
+			if object.item_ref.servable == false:
+				return false
 			if object.name.contains(item):
 				object_item = object #This is an object that exists in the tray and that is on the order
 		if object_item != null:
@@ -33,20 +36,15 @@ func _complete_order():
 		
 func _add_item_to_tray(item : Area2D):
 	items_in_tray.append(item)
-	print_debug(items_in_tray)
 
 func _remove_item_from_tray(item : Area2D):
 	items_in_tray.erase(item)
-	print_debug(items_in_tray)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	_add_item_to_tray(area)
-	print_debug("added")
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	_remove_item_from_tray(area)
-	print_debug("removed")
-
 
 func _on_button_button_up() -> void:
 	_try_to_complete_order()
