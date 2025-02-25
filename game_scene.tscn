@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bqhx28iksc84a" path="res://bun.tscn" id="6_gnxu2"]
 [ext_resource type="PackedScene" uid="uid://ddg84tm1j7g6f" path="res://lettuce.tscn" id="7_y6uxr"]
 [ext_resource type="PackedScene" uid="uid://b3t4oqra8w381" path="res://cheese.tscn" id="8_kpx8k"]
-[ext_resource type="Script" path="res://tip_counter.gd" id="10_bua4g"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_o0hcr"]
 
@@ -35,13 +34,16 @@ font = SubResource("SystemFont_8dcbd")
 font_size = 14
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_u08ta"]
-font_size = 20
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_pbevt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffmfi"]
 size = Vector2(179, 75)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u08ta"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_oxyq1"]
+font_size = 20
 
 [node name="GameScene" type="Node"]
 script = ExtResource("1_4blbw")
@@ -239,6 +241,21 @@ text = "Garbage"
 label_settings = SubResource("LabelSettings_j46k3")
 horizontal_alignment = 1
 
+[node name="CookingStation" type="StaticBody2D" parent="."]
+z_index = -5
+position = Vector2(519, 507)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CookingStation"]
+modulate = Color(0.230315, 0.230315, 0.230315, 1)
+position = Vector2(43, 50.25)
+scale = Vector2(208, 101.5)
+texture = SubResource("CanvasTexture_pbevt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CookingStation"]
+position = Vector2(41.5, 50.5)
+shape = SubResource("RectangleShape2D_ffmfi")
+
 [node name="Burger" parent="." instance=ExtResource("5_pqdkt")]
 position = Vector2(56, 275)
 
@@ -256,33 +273,24 @@ offset_left = 9.0
 offset_right = 268.0
 offset_bottom = 43.0
 label_settings = SubResource("LabelSettings_u08ta")
-script = ExtResource("10_bua4g")
 
-[node name="CookingStation" type="StaticBody2D" parent="."]
-z_index = -5
-position = Vector2(519, 507)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="CookingStation"]
-modulate = Color(0.230315, 0.230315, 0.230315, 1)
-position = Vector2(43, 50.25)
-scale = Vector2(208, 101.5)
-texture = SubResource("CanvasTexture_pbevt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CookingStation"]
-position = Vector2(41.5, 50.5)
-shape = SubResource("RectangleShape2D_ffmfi")
+[node name="ComplaintsCounter" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 30.0
+offset_right = 186.0
+offset_bottom = 78.0
+label_settings = SubResource("LabelSettings_oxyq1")
 
 [connection signal="round_end" from="RoundTimer" to="Burger" method="_on_round_timer_round_end"]
-[connection signal="complete_order" from="OrderTray1" to="TipCounter" method="_on_order_tray_1_complete_order"]
+[connection signal="complete_order" from="OrderTray1" to="." method="_on_order_tray_1_complete_order"]
 [connection signal="area_entered" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OrderTray1/Area2D" to="OrderTray1" method="_on_area_2d_area_exited"]
 [connection signal="button_up" from="OrderTray1/Button" to="OrderTray1" method="_on_button_button_up"]
-[connection signal="complete_order" from="OrderTray2" to="TipCounter" method="_on_order_tray_2_complete_order"]
+[connection signal="complete_order" from="OrderTray2" to="." method="_on_order_tray_2_complete_order"]
 [connection signal="area_entered" from="OrderTray2/Area2D" to="OrderTray2" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OrderTray2/Area2D" to="OrderTray2" method="_on_area_2d_area_exited"]
 [connection signal="button_up" from="OrderTray2/Button" to="OrderTray2" method="_on_button_button_up"]
-[connection signal="complete_order" from="OrderTray3" to="TipCounter" method="_on_order_tray_3_complete_order"]
+[connection signal="complete_order" from="OrderTray3" to="." method="_on_order_tray_3_complete_order"]
 [connection signal="area_entered" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="OrderTray3/Area2D" to="OrderTray3" method="_on_area_2d_area_exited"]
 [connection signal="button_up" from="OrderTray3/Button" to="OrderTray3" method="_on_button_button_up"]
