@@ -50,8 +50,9 @@ rotates = false
 loop = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/PathFollow"]
+z_index = -1
 position = Vector2(-0.999878, -1.00002)
 rotation = -1.56621
-scale = Vector2(0.0648146, 0.0805558)
+scale = Vector2(0.145, 0.181)
 sprite_frames = SubResource("SpriteFrames_frqk1")
 animation = &"Idle"
